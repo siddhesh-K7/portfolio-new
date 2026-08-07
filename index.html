@@ -71,6 +71,10 @@
                 </li>
 
                 <li>
+                    <a href="#certifications">Certifications</a>
+                </li>
+
+                <li>
                     <a href="#achievements">Achievements</a>
                 </li>
 
@@ -422,7 +426,7 @@
                         </h4>
 
                         <p>
-                            CGPA: 7.3
+                            CGPA: 7.44
                         </p>
 
                     </div>
@@ -482,7 +486,6 @@
                     </h4>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
                         <span class="skill-tag">C</span>
                     </div>
                 </div>
@@ -561,7 +564,48 @@
         </section>
 
         <!-- =========================
-             Certifications & Achievements
+             Certifications
+        ========================== -->
+
+        <section id="certifications" class="section fade-in">
+
+            <div class="section-header">
+
+                <h2>
+                    <span class="highlight">05.</span>
+                    Certifications
+                </h2>
+
+            </div>
+
+            <!-- Search & Filters -->
+            <div class="gallery-controls glass-card">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="cert-search" placeholder="Search certificates by name, issuer, or skills...">
+                    <button id="clear-search" class="clear-btn" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-filter="all">All</button>
+                    <button class="filter-pill" data-filter="Cloud & AI">Cloud & AI</button>
+                    <button class="filter-pill" data-filter="Software Development">Software Development</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="certs-grid" id="certs-grid">
+                <!-- Certificate cards will be loaded dynamically by script.js -->
+            </div>
+            
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fa-regular fa-folder-open"></i>
+                <p>No certificates found matching your search.</p>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             Achievements
         ========================== -->
 
         <section id="achievements" class="section fade-in">
@@ -569,8 +613,8 @@
             <div class="section-header">
 
                 <h2>
-                    <span class="highlight">05.</span>
-                    Certifications & Achievements
+                    <span class="highlight">06.</span>
+                    Achievements
                 </h2>
 
             </div>
@@ -579,49 +623,30 @@
 
                 <div class="achievements-grid">
 
-                    <!-- Certifications -->
-                    <div class="glass-card achievement-card">
-                        <div class="achievement-header">
-                            <i class="fa-solid fa-award"></i>
-                            <h3>Certifications</h3>
-                        </div>
-                        <ul class="achievement-list">
-                            <li>
-                                <strong>Python for Data Science</strong> – NPTEL
-                            </li>
-                            <li>
-                                <strong>Introduction to Internet of Things</strong> – NPTEL
-                            </li>
-                            <li>
-                                <strong>Cloud Computing Skill Badges</strong> – Google Cloud Skills Boost & AWS Educate
-                            </li>
-                            <li>
-                                <strong>Foundational Certifications</strong> – Cisco (Networking & Cybersecurity) & Oracle (Database, Cloud, AI)
-                            </li>
-                        </ul>
-                    </div>
-
                     <!-- Achievements -->
-                    <div class="glass-card achievement-card">
+                    <div class="glass-card achievement-card" style="grid-column: 1 / -1;">
                         <div class="achievement-header">
                             <i class="fa-solid fa-trophy"></i>
                             <h3>Achievements</h3>
                         </div>
                         <ul class="achievement-list">
                             <li>
-                                Won <strong>48th Place</strong> in the <em>'Build 2 gether' Hackathon</em> by developing an SDG-based tech solution.
+                                Won <strong>48th Place globally</strong> in the prestigious <em>'Build 2 Gether' Hackathon</em> (out of hundreds of entries) by designing and implementing an SDG-focused technology prototype.
                             </li>
                             <li>
-                                Participated in <strong>Smart India Hackathon</strong> 2024 & 2025.
+                                Selected as a finalist and competed in the <strong>Smart India Hackathon (SIH) 2024 & 2025 (Offline)</strong>, designing robust software solutions for national-level ministry problem statements.
                             </li>
                             <li>
-                                Participated in a <strong>30-hour continuous coding sprint</strong> at the <em>Neurothon Hackathon</em>.
+                                Completed an intense <strong>30-hour continuous offline coding sprint</strong> at the <em>Neurothon Hackathon</em>, collaborating to build and train a custom neural network model for medical diagnosis.
                             </li>
                             <li>
-                                Recognized as a <strong>SkillRack Topper</strong> and consistently active in solving dynamic programming challenges on LeetCode.
+                                Recognized as a <strong>SkillRack Topper for the past two consecutive years (2024–2026)</strong>, demonstrating advanced algorithmic problem-solving speed and consistent coding accuracy.
                             </li>
                             <li>
-                                Volunteered for the <strong>28th Mega Blood Donation Camp</strong> organized by the <em>Sri Sairam Institute of Technology</em>.
+                                Presented a technical project prototype at the <strong>IEEE YESIST12 Maker Fair / Technical Challenge (Offline)</strong>, demonstrating hands-on expertise in hardware-software integration.
+                            </li>
+                            <li>
+                                Volunteered and organized operations at the <strong>28th Mega Blood Donation Camp</strong> at <em>Sri Sairam Institute of Technology (Offline)</em>, managing crowd logistics and donor records.
                             </li>
                         </ul>
                     </div>
@@ -639,54 +664,41 @@
         <section id="contact" class="section fade-in">
 
             <div class="section-header">
-
                 <h2>
-                    <span class="highlight">06.</span>
+                    <span class="highlight">07.</span>
                     Contact
                 </h2>
-
             </div>
 
-            <div class="contact-container glass-card">
-
-                <p class="contact-text">
-
-                    I'm currently open to internships, freelance work,
-                    collaborations, and AI-focused opportunities.
-
-                </p>
-
-                <div class="contact-info">
-
-                    <div class="contact-item">
-
-                        <i class="fas fa-envelope"></i>
-
-                        <span>
-                            siddheshkrishnavel@gmail.com
-                        </span>
-
+            <div class="brutal-form-container">
+                <div class="brutal-tape"></div>
+                <form action="https://formsubmit.co/siddheshkrishnavel@gmail.com" method="POST" class="brutal-form">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New submission from Portfolio!">
+                    
+                    <div class="brutal-row">
+                        <div class="brutal-input-group">
+                            <input type="text" name="name" class="brutal-input" placeholder="Your Name (Make it glorious)" required>
+                        </div>
+                        <div class="brutal-input-group">
+                            <input type="email" name="email" class="brutal-input" placeholder="Your Email Addy" required>
+                        </div>
+                    </div>
+                    
+                    <div class="brutal-input-group">
+                        <input type="text" name="subject" class="brutal-input" placeholder="Subject (Yell it out)" required>
                     </div>
 
-                    <div class="contact-item">
-
-                        <i class="fas fa-location-dot"></i>
-
-                        <span>
-                            Chennai, Tamil Nadu
-                        </span>
-
+                    <div class="brutal-textarea-wrapper">
+                        <div class="brutal-textarea-top">
+                            <textarea name="message" class="brutal-input" placeholder="Your Message (Write an opus)" rows="6" required></textarea>
+                        </div>
+                        <div class="brutal-submit-wrapper">
+                            <button type="submit" class="brutal-submit">SEND IT</button>
+                        </div>
                     </div>
-
-                </div>
-
-                <a
-                    href="mailto:siddheshkrishnavel@gmail.com"
-                    class="btn btn-primary"
-                >
-                    Say Hello
-                </a>
-
+                </form>
             </div>
 
         </section>
@@ -703,8 +715,35 @@
 
     </footer>
 
+    <!-- =========================
+         Certificate Preview Modal
+    ========================== -->
+    <div id="cert-modal" class="cert-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3 id="modal-title">Certificate Title</h3>
+                <button id="modal-close" class="modal-close-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-loader" class="modal-loader">
+                    <div class="spinner"></div>
+                    <p>Loading certificate viewer...</p>
+                </div>
+                <!-- Embed or Object will go here -->
+                <div id="viewer-container" class="viewer-container"></div>
+            </div>
+            <div class="modal-footer">
+                <span id="modal-issuer" class="modal-issuer">Issuer</span>
+            </div>
+        </div>
+    </div>
+
     <!-- JS -->
 
+    <script src="certificates-data.js"></script>
     <script src="script.js"></script>
 
 </body>
