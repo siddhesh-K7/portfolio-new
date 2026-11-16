@@ -4,27 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Siddhesh K | Portfolio</title>
+    <title>Siddhesh K | AI Engineer & Full-Stack Developer</title>
 
-    <meta
-        name="description"
-        content="Portfolio of Siddhesh K, Full Stack Developer and AI Enthusiast"
-    >
+    <meta name="description" content="Portfolio of Siddhesh K — AI Engineer & Full-Stack Developer. Building intelligent solutions, deep learning models, LLM pipelines, and resilient distributed applications.">
+    <meta name="keywords" content="Siddhesh K, Full-Stack Developer, AI Engineer, Machine Learning, Deep Learning, LLM, Python, Java, React, FastApi, Sri Sairam Institute of Technology">
+    <meta name="author" content="Siddhesh K">
+    <link rel="canonical" href="https://siddhesh-k7.github.io/portfolio-new/">
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://siddhesh-k7.github.io/portfolio-new/">
+    <meta property="og:title" content="Siddhesh K | AI Engineer & Full-Stack Developer">
+    <meta property="og:description" content="Computer Science Engineer building intelligent solutions with Deep Learning, LLM agents, and full-stack software architecture.">
+    <meta property="og:image" content="https://siddhesh-k7.github.io/portfolio-new/profile.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://siddhesh-k7.github.io/portfolio-new/">
+    <meta name="twitter:title" content="Siddhesh K | AI Engineer & Full-Stack Developer">
+    <meta name="twitter:description" content="Computer Science Engineer building intelligent solutions with Deep Learning, LLM agents, and full-stack software architecture.">
+    <meta name="twitter:image" content="https://siddhesh-k7.github.io/portfolio-new/profile.jpg">
+
+    <!-- Structured Data (JSON-LD) for Technical Recruiter SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Siddhesh K",
+      "url": "https://siddhesh-k7.github.io/portfolio-new/",
+      "image": "https://siddhesh-k7.github.io/portfolio-new/profile.jpg",
+      "jobTitle": "AI Engineer & Full-Stack Developer",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Sri Sairam Institute of Technology"
+      },
+      "sameAs": [
+        "https://github.com/Siddhesh-K7",
+        "https://www.linkedin.com/in/siddhesh-k-75b87933b",
+        "https://leetcode.com/u/aZbuzQuYMr/"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Machine Learning",
+        "Deep Learning",
+        "Large Language Models",
+        "Full-Stack Development",
+        "Python",
+        "Java",
+        "FastAPI",
+        "React",
+        "MongoDB",
+        "MySQL"
+      ]
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap"
-        rel="stylesheet"
-    >
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
@@ -39,680 +80,974 @@
     <!-- =========================
          Navbar
     ========================== -->
-
     <nav class="navbar">
-
         <div class="nav-content">
-
-            <a href="#" class="logo">
-        
+            <a href="#home" class="logo" style="text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.25rem; font-family: var(--font-mono); letter-spacing: -0.5px;">
+                <span class="highlight">&lt;</span>Siddhesh<span class="highlight">/&gt;</span>
             </a>
 
-            <ul class="nav-links">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#github">GitHub</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
 
-                <li>
-                    <a href="#home">Home</a>
-                </li>
+                <!-- Theme Switcher -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle theme" title="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
 
-                <li>
-                    <a href="#experience">Experience</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-
-                <li>
-                    <a href="#education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#skills">Skills</a>
-                </li>
-
-                <li>
-                    <a href="#certifications">Certifications</a>
-                </li>
-
-                <li>
-                    <a href="#achievements">Achievements</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-            </ul>
-
+                <!-- Mobile Hamburger Toggle -->
+                <button id="mobile-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
         </div>
-
     </nav>
 
     <!-- =========================
          Main
     ========================== -->
-
     <main>
 
         <!-- =========================
              Hero Section
         ========================== -->
-
         <section id="home" class="hero fade-in">
-
             <div class="hero-content">
-
                 <div class="greeting">
-                    Hi, I'm
+                    <span style="display: inline-block; padding: 4px 12px; background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.25); border-radius: 20px; font-size: 0.85rem; color: var(--accent); margin-bottom: 12px; font-weight: 500;">
+                        👋 Available for Internships & Full-Stack / AI Roles
+                    </span>
+                    <br>Hi, I'm
                 </div>
 
                 <h1 class="name">
                     Siddhesh K
                 </h1>
 
-                <h2 class="title">
-                    Full Stack Developer & AI Enthusiast
+                <h2 class="title" style="min-height: 1.6em;">
+                    Building Intelligent Solutions Through Code.
                 </h2>
 
                 <p class="summary">
-
-                    Computer Science Engineering undergraduate specializing in
-                    full-stack development, deep learning, and AI-powered
-                    applications.
-
-                    Passionate about building scalable software solutions,
-                    solving algorithmic problems, and creating modern digital
-                    experiences with clean UI/UX.
-
+                    Computer Science Engineering undergraduate at Sri Sairam Institute of Technology (2027) specializing in 
+                    <strong>Artificial Intelligence, Deep Learning, and Full-Stack Engineering</strong>. 
+                    Proven track record architecting multi-agent systems, deep neural network pipelines, and scalable enterprise applications.
                 </p>
 
-                <!-- Buttons -->
-
-                <div class="cta-group">
-
-                    <a href="#contact" class="btn btn-primary">
-                        Hire Me
+                <!-- Action Buttons -->
+                <div class="cta-group" style="flex-wrap: wrap;">
+                    <a href="assets/Siddhesh_K_Resume.pdf" download="Siddhesh_K_Resume.pdf" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-file-arrow-down"></i> Download Resume
                     </a>
 
-                    <a href="#projects" class="btn btn-secondary">
-                        View Projects
+                    <a href="#projects" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-laptop-code"></i> View Projects
                     </a>
 
+                    <a href="#contact" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-regular fa-envelope"></i> Get In Touch
+                    </a>
                 </div>
 
-                <!-- Social -->
-
+                <!-- Verified Profiles & Social Links -->
                 <div class="social-links">
-
-                    <a
-                        href="https://www.linkedin.com/in/siddhesh-k-75b87933b"
-                        target="_blank"
-                        class="social-icon"
-                    >
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a
-                        href="https://github.com/Siddhesh-K7"
-                        target="_blank"
-                        class="social-icon"
-                    >
+                    <a href="https://github.com/Siddhesh-K7" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub Profile">
                         <i class="fab fa-github"></i>
                     </a>
 
-                    
-                    <a
-                        href="https://leetcode.com/u/aZbuzQuYMr/"
-                        target="_blank"
-                        class="social-icon leetcode-icon"
-                    >
-                        <img
-                            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/leetcode.svg"
-                            alt="LeetCode"
-                        >
+                    <a href="https://www.linkedin.com/in/siddhesh-k-75b87933b" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile">
+                        <i class="fab fa-linkedin-in"></i>
                     </a>
 
+                    <a href="https://leetcode.com/u/aZbuzQuYMr/" target="_blank" rel="noopener noreferrer" class="social-icon leetcode-icon" title="LeetCode Profile">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/leetcode.svg" alt="LeetCode">
+                    </a>
 
-
-                    <a
-                        href="mailto:siddheshkrishnavel@gmail.com"
-                        class="social-icon"
-                    >
+                    <a href="mailto:siddheshkrishnavel@gmail.com" class="social-icon" title="Send Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-
                 </div>
-
             </div>
 
             <!-- Hero Visual -->
-
             <div class="hero-visual">
-
                 <div class="avatar-container">
-
-                    <img src="profile.jpg" alt="Siddhesh K" class="avatar-img">
-
+                    <img src="profile.jpg" alt="Siddhesh K" class="avatar-img" loading="eager">
                 </div>
-
             </div>
-
         </section>
 
         <!-- =========================
-             Experience
+             About Me Section
         ========================== -->
-
-        <section id="experience" class="section fade-in">
-
+        <section id="about" class="section fade-in">
             <div class="section-header">
-
                 <h2>
                     <span class="highlight">01.</span>
-                    Experience
+                    About Me
                 </h2>
+            </div>
 
+            <div class="about-grid">
+                <div class="glass-card about-text">
+                    <h3 style="font-size: 1.4rem; margin-bottom: 15px; color: var(--text);">
+                        Engineering Scalable Systems & Practical AI
+                    </h3>
+                    <p>
+                        I am a third-year Computer Science and Engineering student at <strong>Sri Sairam Institute of Technology (Class of 2027)</strong> based in Tamil Nadu, India. My passion lies at the intersection of robust backend software architecture and applied Artificial Intelligence.
+                    </p>
+                    <p>
+                        My engineering journey is driven by solving real-world challenges through code. I have engineered real-time deep learning computer vision systems (1D-CNN and OpenCV), built end-to-end multi-agent autonomous e-commerce engines integrating Google Gemini and PayPal APIs, and optimized database query bottlenecks in enterprise web services.
+                    </p>
+                    <p>
+                        Beyond building software, I consistently hone my core algorithmic capabilities as a two-time consecutive <strong>SkillRack Topper (2024–2026)</strong> and an active participant in national hackathons including the Smart India Hackathon (SIH) and global Devpost competitions.
+                    </p>
+
+                    <div class="about-highlights">
+                        <div class="about-stat">
+                            <span class="stat-num">2027</span>
+                            <span class="stat-label">Graduation Year (B.E CSE)</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-num">25+</span>
+                            <span class="stat-label">Verified Certifications</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-num">2</span>
+                            <span class="stat-label">Years SkillRack Topper</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-num">Top 48</span>
+                            <span class="stat-label">Global Hackathon Ranking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card about-focus-card">
+                    <h3><i class="fa-solid fa-compass highlight"></i> Primary Technical Focus</h3>
+                    <ul class="focus-list">
+                        <li>
+                            <i class="fa-solid fa-brain"></i>
+                            <div>
+                                <strong style="color: var(--text); display: block;">Applied AI & LLM Agents</strong>
+                                Designing multi-agent pipelines with Gemini, LangChain patterns, and autonomous tool invocation.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-layer-group"></i>
+                            <div>
+                                <strong style="color: var(--text); display: block;">Full-Stack Development</strong>
+                                Developing performant client-server applications with React, FastAPI, Flask, and Node.js.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-database"></i>
+                            <div>
+                                <strong style="color: var(--text); display: block;">Data Architecture & Optimization</strong>
+                                Database schema modeling, LINQ query tuning, and index optimizations across MongoDB and MySQL.
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-code"></i>
+                            <div>
+                                <strong style="color: var(--text); display: block;">Algorithmic Problem Solving</strong>
+                                Continuous data structures & algorithmic mastery across Python, Java, and C.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             Experience / Practical Work
+        ========================== -->
+        <section id="experience" class="section fade-in">
+            <div class="section-header">
+                <h2>
+                    <span class="highlight">02.</span>
+                    Experience & Internships
+                </h2>
             </div>
 
             <div class="timeline">
-
                 <!-- Experience 1 -->
-
                 <div class="timeline-item glass-card">
-
                     <div class="timeline-date">
                         Jun 2025 – Jul 2025
                     </div>
-
                     <div class="timeline-content">
-
-                        <h3>
-                            Full Stack Web Development Intern
-                        </h3>
-
-                        <h4>
-                            @ One Yes Infotech Solutions
-                        </h4>
-
+                        <h3>Full Stack Web Development Intern</h3>
+                        <h4>@ One Yes Infotech Solutions</h4>
                         <ul class="experience-list">
-
                             <li>
                                 <strong>Engineered</strong> a full-stack hospital management system using ReactJS and Flask, scaling the application to securely handle 500+ patient records and automate billing modules.
                             </li>
-
                             <li>
                                 <strong>Architected</strong> a robust MySQL relational database schema optimizing CRUD operations, which successfully decreased manual data entry time by 35%.
                             </li>
-
                             <li>
-                                <strong>Developed and deployed</strong> secure REST APIs with Python, facilitating seamless and secure data communication across doctor, and administrative interfaces.
+                                <strong>Developed and deployed</strong> secure REST APIs with Python, facilitating seamless and secure data communication across doctor and administrative interfaces.
                             </li>
-
                         </ul>
-
                     </div>
-
                 </div>
 
                 <!-- Experience 2 -->
-
                 <div class="timeline-item glass-card">
-
                     <div class="timeline-date">
                         Feb 2025 – Mar 2025
                     </div>
-
                     <div class="timeline-content">
-
-                        <h3>
-                            Python Data Science Trainee
-                        </h3>
-
-                        <h4>
-                            @ YBI Foundation
-                        </h4>
-
+                        <h3>Python Data Science Trainee</h3>
+                        <h4>@ YBI Foundation</h4>
                         <ul class="experience-list">
-
                             <li>
-                                <strong>Spearheaded</strong> 2 comprehensive data analysis projects, leveraging NumPy and Pandas to automate and accelerate complex data cleaning and manipulation pipelines.
+                                <strong>Spearheaded</strong> comprehensive data analysis projects, leveraging NumPy and Pandas to automate and accelerate complex data cleaning and transformation pipelines.
                             </li>
-
                             <li>
-                                <strong>Optimized</strong> rigorous algorithmic challenges in Python, achieving a 40% improvement in overall script efficiency and performance.
+                                <strong>Optimized</strong> rigorous algorithmic challenges in Python, achieving a 40% improvement in script execution efficiency and memory footprint.
                             </li>
-
                             <li>
-                                <strong>Implemented</strong> advanced Python software architecture concepts, including Object-Oriented Programming (OOP) and dynamic data structures, to build scalable technical solutions.
+                                <strong>Implemented</strong> clean Python software architecture principles, including Object-Oriented Programming (OOP) and dynamic data structures, to build scalable technical solutions.
                             </li>
-
                         </ul>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
         <!-- =========================
-             Projects
+             Featured Projects
         ========================== -->
-
         <section id="projects" class="section fade-in">
-
             <div class="section-header">
-
-                <h2>
-                    <span class="highlight">02.</span>
-                    Projects
-                </h2>
-
-            </div>
-
-            <div class="projects-grid">
-
-                <!-- Project 1 -->
-
-                <div class="glass-card project-card">
-
-                    <div class="project-header">
-
-                        <div class="project-folder">
-                            <i class="far fa-folder-open"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3>
-                            Real-Time Sign Language Recognition System
-                        </h3>
-
-                        <p class="project-description">
-
-                            <strong>Designed and implemented</strong> an assistive technology web application powered by a Deep Learning Convolutional Neural Network (1D-CNN) for real-time hand gesture classification, integrating OpenCV for highly scalable translation pipelines.
-
-                        </p>
-
-                    </div>
-
-                    <ul class="project-tech">
-
-                        <li>Python</li>
-                        <li>ReactJS</li>
-                        <li>OpenCV</li>
-                        <li>Deep Learning</li>
-                        <li>Figma</li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Project 2 -->
-
-                <div class="glass-card project-card">
-
-                    <div class="project-header">
-
-                        <div class="project-folder">
-                            <i class="far fa-folder-open"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="project-content">
-
-                        <h3>
-                            Build 2 Gether Hackathon: SDG Tech Solution
-                        </h3>
-
-                        <p class="project-description">
-
-                            <strong>Developed and deployed</strong> an SDG-focused technology prototype, winning 48th place out of hundreds of entries globally for addressal of sustainable development goals.
-
-                        </p>
-
-                    </div>
-
-                    <ul class="project-tech">
-
-                        <li>Python</li>
-                        <li>Cloud</li>
-                        <li>GenAI</li>
-                        <li>APIs</li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- =========================
-             Education
-        ========================== -->
-
-        <section id="education" class="section fade-in">
-
-            <div class="section-header">
-
                 <h2>
                     <span class="highlight">03.</span>
-                    Education
+                    Featured Projects
                 </h2>
-
             </div>
 
-            <div class="timeline">
+            <!-- Project Filter Bar -->
+            <div class="projects-filter-bar">
+                <button class="project-filter-btn active" data-proj-filter="all">All Projects</button>
+                <button class="project-filter-btn" data-proj-filter="ai">AI / GenAI & ML</button>
+                <button class="project-filter-btn" data-proj-filter="fullstack">Full-Stack & Backend</button>
+                <button class="project-filter-btn" data-proj-filter="system">Systems & Performance</button>
+            </div>
 
-                <div class="timeline-item glass-card">
+            <div class="projects-grid" id="projects-grid">
 
-                    <div class="timeline-date">
-                        2023 – 2027
+                <!-- Project 1: PayPilot AI -->
+                <div class="glass-card project-card" data-category="ai fullstack">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">AI Agent / FinTech</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/devpost-hackathon" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3>PayPilot AI: Autonomous Commerce & Multi-Agent Engine</h3>
+                            <p class="project-description">
+                                Autonomous multi-agent commerce engine built for the PayPal AI Hackathon 2026. Employs Google Gemini to analyze user shopping intent, evaluate cross-platform catalogs, manage an autonomous digital wallet, and orchestrate live transaction checkouts.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Multi-agent orchestration pipeline with Google Gemini Flash & FastAPI.</li>
+                                <li>Seamless transaction execution using PayPal Orders API v2 Sandbox.</li>
+                                <li>Isolated MongoDB database with 22 schema-managed operational collections.</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="timeline-content">
-
-                        <h3>
-                            Sri Sairam Institute of Technology
-                        </h3>
-
-                        <h4>
-                            B.E Computer Science and Engineering
-                        </h4>
-
-                        <p>
-                            CGPA: 7.44
-                        </p>
-
-                    </div>
-
+                    <ul class="project-tech">
+                        <li>Google Gemini</li>
+                        <li>FastAPI</li>
+                        <li>Python</li>
+                        <li>PayPal API</li>
+                        <li>MongoDB</li>
+                        <li>React 19</li>
+                    </ul>
                 </div>
 
-                <div class="timeline-item glass-card">
+                <!-- Project 2: AgriSense -->
+                <div class="glass-card project-card" data-category="ai">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-wheat-awn"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">Deep Learning / XAI</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/agrisense" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="timeline-date">
-                        2022 – 2023
+                        <div class="project-content">
+                            <h3>AgriSense: Explainable Agricultural Price & Demand Forecasting</h3>
+                            <p class="project-description">
+                                Production-grade research platform predicting mandi commodity prices and market demand volatility with dual Explainable AI (SHAP) attributions.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Stacked 2-layer LSTM network trained on AGMARKNET mandi price time-series.</li>
+                                <li>XGBoost regressor for demand forecasting across 20 agro-economic indicators.</li>
+                                <li>SHAP TreeExplainer & GradientExplainer for full temporal feature interpretability.</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="timeline-content">
+                    <ul class="project-tech">
+                        <li>PyTorch / Keras</li>
+                        <li>LSTM</li>
+                        <li>XGBoost</li>
+                        <li>SHAP (XAI)</li>
+                        <li>FastAPI</li>
+                        <li>React + Vite</li>
+                    </ul>
+                </div>
 
-                        <h3>
-                            Sriram Matriculation Higher Secondary School
-                        </h3>
+                <!-- Project 3: Real-Time Sign Language Recognition -->
+                <div class="glass-card project-card" data-category="ai">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-hands-asl-interpreting"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">Computer Vision</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/sign-backend" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
 
-                        <h4>
-                            Higher Secondary Certificate
-                        </h4>
-
-                        <p>
-                            Percentage: 82%
-                        </p>
-
+                        <div class="project-content">
+                            <h3>Real-Time Sign Language Recognition System</h3>
+                            <p class="project-description">
+                                Assistive technology application powered by a Deep Learning Convolutional Neural Network (1D-CNN) for real-time hand gesture classification and interactive translation.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Real-time hand gesture feature extraction and tracking with OpenCV.</li>
+                                <li>Trained CNN model delivering high-accuracy low-latency classification.</li>
+                                <li>Full-stack integration with responsive web UI and clean REST API.</li>
+                            </ul>
+                        </div>
                     </div>
 
+                    <ul class="project-tech">
+                        <li>Python</li>
+                        <li>OpenCV</li>
+                        <li>Deep Learning (CNN)</li>
+                        <li>ReactJS</li>
+                        <li>REST API</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4: Customer Support OpenEnv AI Agent -->
+                <div class="glass-card project-card" data-category="ai system">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">AI Agent Environment</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/real-world-OpenEnv-environment-that-an-AI-agent" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3>OpenEnv AI Agent Customer Support Environment</h3>
+                            <p class="project-description">
+                                Simulation and evaluation environment built for benchmarking autonomous AI agents on support ticket triage, priority scoring, automated drafting, and resolution states.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Formal finite-state machine environment logic with programmatic rewards.</li>
+                                <li>FastAPI server implementing OpenEnv benchmark protocols.</li>
+                                <li>Dockerized for seamless deployment and repeatable agent evaluation.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="project-tech">
+                        <li>Python 3</li>
+                        <li>FastAPI</li>
+                        <li>Pydantic</li>
+                        <li>OpenAI SDK</li>
+                        <li>Docker</li>
+                    </ul>
+                </div>
+
+                <!-- Project 5: WarehouseX Performance Optimization -->
+                <div class="glass-card project-card" data-category="fullstack system">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-gauge-high"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">Architecture & Perf</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/WarehouseX-Order-Management-Performance-Optimization-System" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3>WarehouseX: High-Throughput Order Management & Optimization</h3>
+                            <p class="project-description">
+                                Order management backend engineering project demonstrating database optimization, elimination of N+1 query bottlenecks, and asynchronous execution in ASP.NET Core.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Decreased database execution latency by &gt;50% via index creation & DTO projections.</li>
+                                <li>Eliminated entity change-tracking overhead using non-tracking read-only pipelines.</li>
+                                <li>Unit-tested using xUnit and in-memory test databases with comprehensive error handling.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="project-tech">
+                        <li>C# 12 / .NET 8</li>
+                        <li>ASP.NET Core Web API</li>
+                        <li>Entity Framework Core</li>
+                        <li>SQL Optimization</li>
+                        <li>xUnit</li>
+                    </ul>
+                </div>
+
+                <!-- Project 6: SafeVault -->
+                <div class="glass-card project-card" data-category="fullstack system">
+                    <div>
+                        <div class="project-card-top">
+                            <div class="project-folder">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="project-badge-tag">Security & Auth</span>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/siddhesh-K7/SafeVault-Secure-User-Management-System" target="_blank" rel="noopener noreferrer" title="GitHub Repository">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-content">
+                            <h3>SafeVault: Secure User Management & Authentication System</h3>
+                            <p class="project-description">
+                                Enterprise user authentication and access control system prioritizing cryptographic security, role-based authorization (RBAC), and protected endpoints.
+                            </p>
+                            <ul class="project-features-list">
+                                <li>Secure password hashing algorithms with salt & token authorization.</li>
+                                <li>Strict input validation preventing SQL injection and security vectors.</li>
+                                <li>Modular architectural separation for scalability and maintainability.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <ul class="project-tech">
+                        <li>Python</li>
+                        <li>REST Security</li>
+                        <li>Authentication</li>
+                        <li>Relational DB</li>
+                        <li>Clean Architecture</li>
+                    </ul>
                 </div>
 
             </div>
-
         </section>
 
         <!-- =========================
-             Skills
+             Technical Skills
         ========================== -->
-
         <section id="skills" class="section fade-in">
-
             <div class="section-header">
-
                 <h2>
                     <span class="highlight">04.</span>
-                    Skills
+                    Technical Skills
                 </h2>
-
             </div>
 
             <div class="skills-grid">
-
-                <!-- Languages -->
+                <!-- Programming Languages -->
                 <div class="skill-category glass-card">
                     <h4>
                         <i class="fa-solid fa-code"></i>
-                        Languages
+                        Programming Languages
                     </h4>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">SQL</span>
                         <span class="skill-tag">C</span>
                     </div>
                 </div>
 
-                <!-- Web Technologies -->
-                <div class="skill-category glass-card">
-                    <h4>
-                        <i class="fa-solid fa-globe"></i>
-                        Web Technologies
-                    </h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML</span>
-                        <span class="skill-tag">CSS</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">ReactJS</span>
-                        <span class="skill-tag">Flask</span>
-                    </div>
-                </div>
-
-                <!-- Data Science & AI -->
+                <!-- AI / Machine Learning -->
                 <div class="skill-category glass-card">
                     <h4>
                         <i class="fa-solid fa-brain"></i>
-                        Data Science & AI
+                        AI, ML & Deep Learning
                     </h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">Deep Learning</span>
                         <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">GenAI</span>
-                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Deep Learning (CNN / LSTM)</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">LLM Orchestration</span>
+                        <span class="skill-tag">AI Agents</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Explainable AI (SHAP)</span>
                         <span class="skill-tag">OpenCV</span>
                         <span class="skill-tag">NumPy</span>
                         <span class="skill-tag">Pandas</span>
                     </div>
                 </div>
 
-                <!-- Databases -->
+                <!-- Backend Engineering -->
+                <div class="skill-category glass-card">
+                    <h4>
+                        <i class="fa-solid fa-server"></i>
+                        Backend & API Engineering
+                    </h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">RESTful API Design</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Microservice Architecture</span>
+                        <span class="skill-tag">PayPal Orders API v2</span>
+                    </div>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="skill-category glass-card">
+                    <h4>
+                        <i class="fa-solid fa-laptop-code"></i>
+                        Frontend Development
+                    </h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML5 & Semantic Markup</span>
+                        <span class="skill-tag">Modern CSS3 & Flexbox/Grid</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">Responsive UI/UX</span>
+                    </div>
+                </div>
+
+                <!-- Databases & Data Storage -->
                 <div class="skill-category glass-card">
                     <h4>
                         <i class="fa-solid fa-database"></i>
-                        Databases
+                        Databases & Caching
                     </h4>
                     <div class="skill-tags">
-                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MongoDB (NoSQL)</span>
+                        <span class="skill-tag">MySQL (Relational)</span>
+                        <span class="skill-tag">Database Schema Design</span>
+                        <span class="skill-tag">Query Optimization</span>
                     </div>
                 </div>
 
-                <!-- Tools & Cloud -->
+                <!-- Tools, DevOps & Platforms -->
                 <div class="skill-category glass-card">
                     <h4>
                         <i class="fa-solid fa-toolbox"></i>
-                        Tools & Cloud
+                        Tools, Cloud & DevOps
                     </h4>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
                         <span class="skill-tag">Docker</span>
                         <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Antigravity</span>
                         <span class="skill-tag">Google Cloud</span>
+                        <span class="skill-tag">AWS Cloud Basics</span>
+                        <span class="skill-tag">Vercel & Netlify</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Deployment & Hosting -->
-                <div class="skill-category glass-card">
-                    <h4>
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        Deployment
-                    </h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Vercel</span>
-                    </div>
-                </div>
-
+        <!-- =========================
+             GitHub Activity & Statistics
+        ========================== -->
+        <section id="github" class="section fade-in">
+            <div class="section-header">
+                <h2>
+                    <span class="highlight">05.</span>
+                    GitHub Activity & Open Source
+                </h2>
             </div>
 
+            <!-- GitHub Metrics Counter Grid -->
+            <div class="github-metrics-grid">
+                <div class="glass-card metric-card">
+                    <i class="fa-solid fa-book-bookmark metric-icon"></i>
+                    <div>
+                        <div class="metric-val" id="gh-repos-count">21+</div>
+                        <div class="metric-title">Public Repositories</div>
+                    </div>
+                </div>
+
+                <div class="glass-card metric-card">
+                    <i class="fa-solid fa-code-commit metric-icon"></i>
+                    <div>
+                        <div class="metric-val" id="gh-commits-count">Active</div>
+                        <div class="metric-title">Continuous Shipping</div>
+                    </div>
+                </div>
+
+                <div class="glass-card metric-card">
+                    <i class="fa-solid fa-laptop-code metric-icon"></i>
+                    <div>
+                        <div class="metric-val">Python / TS</div>
+                        <div class="metric-title">Primary Languages</div>
+                    </div>
+                </div>
+
+                <div class="glass-card metric-card">
+                    <i class="fa-solid fa-globe metric-icon"></i>
+                    <div>
+                        <div class="metric-val">100%</div>
+                        <div class="metric-title">Open Source Visibility</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GitHub Contribution Graph -->
+            <div class="glass-card github-graph-card">
+                <h3><i class="fa-brands fa-github highlight"></i> Contribution Activity</h3>
+                <div class="github-graph-wrapper">
+                    <img src="https://ghchart.rshah.org/00e5ff/siddhesh-K7" alt="Siddhesh K GitHub Contribution Calendar" loading="lazy" style="max-width: 100%; border-radius: 8px;">
+                </div>
+                <div style="margin-top: 15px;">
+                    <a href="https://github.com/Siddhesh-K7" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fa-brands fa-github"></i> Visit GitHub Profile (@siddhesh-K7)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Active Repositories Dynamic Container -->
+            <div class="github-repos-container">
+                <h3 style="font-size: 1.3rem; margin-bottom: 20px; color: var(--text);">
+                    <i class="fa-solid fa-code-branch highlight"></i> Highlighted Open-Source Repositories
+                </h3>
+                <div class="github-repos-grid" id="github-repos-grid">
+                    <!-- Populated dynamically or fallbacks -->
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================
+             Education
+        ========================== -->
+        <section id="education" class="section fade-in">
+            <div class="section-header">
+                <h2>
+                    <span class="highlight">06.</span>
+                    Education
+                </h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item glass-card">
+                    <div class="timeline-date">
+                        2023 – 2027 (Expected)
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Sri Sairam Institute of Technology</h3>
+                        <h4>Bachelor of Engineering (B.E) in Computer Science and Engineering</h4>
+                        <p style="color: var(--muted); margin-bottom: 8px;">
+                            Affiliated with Anna University | Tamil Nadu, India
+                        </p>
+                        <p style="color: var(--text);">
+                            <strong>CGPA:</strong> 7.44 / 10.0
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item glass-card">
+                    <div class="timeline-date">
+                        2022 – 2023
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Sriram Matriculation Higher Secondary School</h3>
+                        <h4>Higher Secondary Certificate (HSC)</h4>
+                        <p style="color: var(--text);">
+                            <strong>Percentage:</strong> 82%
+                        </p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- =========================
              Certifications
         ========================== -->
-
         <section id="certifications" class="section fade-in">
-
             <div class="section-header">
-
                 <h2>
-                    <span class="highlight">05.</span>
-                    Certifications
+                    <span class="highlight">07.</span>
+                    Verified Certifications
                 </h2>
-
             </div>
 
+            <!-- Search & Category Filters -->
+            <div class="gallery-controls glass-card">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="cert-search" placeholder="Search certifications by name, issuer, or skill (e.g. AWS, AI, Python)..." aria-label="Search certifications">
+                    <button class="clear-btn" id="clear-search" style="display: none;" title="Clear Search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-filter="all">All (25+)</button>
+                    <button class="filter-pill" data-filter="Cloud & AI">Cloud & AI</button>
+                    <button class="filter-pill" data-filter="Software Development">Software & Net</button>
+                    <button class="filter-pill" data-filter="Hackathons & Experience">Hackathons</button>
+                </div>
+            </div>
 
             <!-- Gallery Grid -->
             <div class="certs-grid" id="certs-grid">
                 <!-- Certificate cards will be loaded dynamically by script.js -->
             </div>
             
-            <div class="no-results" id="no-results" style="display: none;">
-                <i class="fa-regular fa-folder-open"></i>
-                <p>No certificates found matching your search.</p>
+            <div class="no-results" id="no-results" style="display: none; text-align: center; padding: 40px; color: var(--muted);">
+                <i class="fa-regular fa-folder-open" style="font-size: 3rem; margin-bottom: 15px; display: block; color: var(--accent);"></i>
+                <p>No certificates found matching your search term.</p>
             </div>
-
         </section>
 
         <!-- =========================
              Achievements
         ========================== -->
-
         <section id="achievements" class="section fade-in">
-
             <div class="section-header">
-
                 <h2>
-                    <span class="highlight">06.</span>
-                    Achievements
+                    <span class="highlight">08.</span>
+                    Honors & Achievements
                 </h2>
-
             </div>
 
             <div class="achievements-container">
-
                 <div class="achievements-grid">
-
-                    <!-- Achievements -->
                     <div class="glass-card achievement-card" style="grid-column: 1 / -1;">
-                        <div class="achievement-header">
-                            <i class="fa-solid fa-trophy"></i>
-                            <h3>Achievements</h3>
+                        <div class="achievement-header" style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
+                            <i class="fa-solid fa-trophy" style="font-size: 2rem; color: #fbbf24;"></i>
+                            <h3 style="font-size: 1.5rem; color: var(--text);">Verified Recognitions & Technical Competitions</h3>
                         </div>
-                        <ul class="achievement-list">
-                            <li>
-                                Served as an <strong>Active Member</strong> in the <em>Disaster Management and Safety Club</em>, contributing to various safety awareness and preparedness initiatives.
+                        <ul class="achievement-list" style="padding-left: 20px; line-height: 1.8;">
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Won <strong>48th Place globally</strong> in the prestigious <em>'Build 2 Gether' Hackathon</em> (out of hundreds of international submissions) by building and deploying an SDG-focused technology solution.
                             </li>
-                            <li>
-                                Won <strong>48th Place globally</strong> in the prestigious <em>'Build 2 Gether' Hackathon</em> (out of hundreds of entries) by designing and implementing an SDG-focused technology prototype.
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Selected as a national finalist and competed in the <strong>Smart India Hackathon (SIH) 2024 & 2025 (Offline)</strong>, architecting production software solutions for national-level ministry problem statements.
                             </li>
-                            <li>
-                                Selected as a finalist and competed in the <strong>Smart India Hackathon (SIH) 2024 & 2025 (Offline)</strong>, designing robust software solutions for national-level ministry problem statements.
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Recognized as a <strong>SkillRack Topper for two consecutive years (2024–2026)</strong>, demonstrating exceptional algorithmic problem-solving speed, data structure mastery, and code accuracy.
                             </li>
-                            <li>
-                                Completed an intense <strong>30-hour continuous offline coding sprint</strong> at the <em>Neurothon Hackathon</em>, collaborating to build and train a custom neural network model for medical diagnosis.
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Completed an intense <strong>30-hour continuous offline coding marathon</strong> at the <em>Neurothon Hackathon</em>, collaborating to build and train a custom neural network model for automated medical diagnosis.
                             </li>
-                            <li>
-                                Recognized as a <strong>SkillRack Topper for the past two consecutive years (2024–2026)</strong>, demonstrating advanced algorithmic problem-solving speed and consistent coding accuracy.
-                            </li>
-                            <li>
+                            <li style="margin-bottom: 14px; color: var(--muted);">
                                 Presented a technical project prototype at the <strong>IEEE YESIST12 Maker Fair / Technical Challenge (Offline)</strong>, demonstrating hands-on expertise in hardware-software integration.
                             </li>
-                            <li>
-                                Volunteered and organized operations at the <strong>28th Mega Blood Donation Camp</strong> at <em>Sri Sairam Institute of Technology (Offline)</em>, managing crowd logistics and donor records.
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Active Member in the <strong>Disaster Management and Safety Club</strong>, contributing to safety preparedness campaigns and technological outreach.
+                            </li>
+                            <li style="margin-bottom: 14px; color: var(--muted);">
+                                Volunteered and organized operations at the <strong>28th Mega Blood Donation Camp</strong> at <em>Sri Sairam Institute of Technology</em>, managing crowd logistics and donor records.
                             </li>
                         </ul>
                     </div>
-
                 </div>
-
             </div>
-
         </section>
 
         <!-- =========================
-             Contact
+             Contact Section (With Validation)
         ========================== -->
-
         <section id="contact" class="section fade-in">
-
             <div class="section-header">
                 <h2>
-                    <span class="highlight">07.</span>
-                    Contact
+                    <span class="highlight">09.</span>
+                    Get In Touch
                 </h2>
             </div>
 
-            <div class="contact-info glass-card" style="text-align: center; max-width: 600px; margin: 0 auto; padding: 3rem 2rem;">
-                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6; font-style: italic;">
-                    "I am always open to discussing new projects, creative ideas,<br> or opportunities to be part of your visions."
-                </p>
-                <a href="mailto:siddheshkrishnavel@gmail.com" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-                    <i class="fas fa-envelope"></i> siddheshkrishnavel@gmail.com
-                </a>
-            </div>
+            <div class="contact-grid">
+                <!-- Direct Channels -->
+                <div class="glass-card contact-info-panel">
+                    <div>
+                        <h3>Let's Build Something Exceptional</h3>
+                        <p>
+                            I am actively seeking software development internships, full-stack engineering roles, and AI research collaborations. Whether you have a project idea, question, or opportunity, feel free to reach out directly.
+                        </p>
 
+                        <div class="contact-channels">
+                            <a href="mailto:siddheshkrishnavel@gmail.com" class="contact-channel-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <div class="channel-title">Direct Email</div>
+                                    <div class="channel-val">siddheshkrishnavel@gmail.com</div>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/siddhesh-k-75b87933b" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                                <i class="fab fa-linkedin"></i>
+                                <div>
+                                    <div class="channel-title">LinkedIn Connection</div>
+                                    <div class="channel-val">linkedin.com/in/siddhesh-k-75b87933b</div>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/Siddhesh-K7" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <div class="channel-title">GitHub Profile</div>
+                                    <div class="channel-val">github.com/Siddhesh-K7</div>
+                                </div>
+                            </a>
+
+                            <div class="contact-channel-item" style="cursor: default;">
+                                <i class="fas fa-location-dot"></i>
+                                <div>
+                                    <div class="channel-title">Current Location</div>
+                                    <div class="channel-val">Tamil Nadu, India</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 25px;">
+                        <a href="assets/Siddhesh_K_Resume.pdf" download="Siddhesh_K_Resume.pdf" class="btn btn-secondary" style="width: 100%; text-align: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fa-solid fa-download"></i> Download Resume (PDF)
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Interactive Contact Form -->
+                <div class="glass-card brutal-form-container">
+                    <h3 style="margin-bottom: 20px; font-size: 1.3rem; color: var(--text);">
+                        <i class="fa-regular fa-paper-plane highlight"></i> Send a Direct Message
+                    </h3>
+
+                    <form id="contact-form" class="brutal-form" novalidate>
+                        <div class="brutal-row">
+                            <div class="brutal-input-group">
+                                <input type="text" id="sender-name" class="brutal-input" placeholder="Your Name *" required>
+                            </div>
+                            <div class="brutal-input-group">
+                                <input type="email" id="sender-email" class="brutal-input" placeholder="Your Email *" required>
+                            </div>
+                        </div>
+
+                        <div class="brutal-input-group">
+                            <input type="text" id="sender-subject" class="brutal-input" placeholder="Subject / Opportunity Type *" required>
+                        </div>
+
+                        <div class="brutal-textarea-wrapper">
+                            <textarea id="sender-message" class="brutal-input" rows="5" placeholder="Your Message or Project Details *" style="resize: vertical;" required></textarea>
+                            <div class="brutal-submit-wrapper">
+                                <button type="submit" class="btn btn-primary brutal-submit" id="submit-btn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+                                    <span>Send Message</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="form-alert" class="form-status-alert"></div>
+                    </form>
+                </div>
+            </div>
         </section>
 
     </main>
 
     <!-- Footer -->
-
     <footer>
-
-        <p>
-            Designed & Built by Siddhesh K © 2026
-        </p>
-
+        <div style="max-width: 1200px; margin: 0 auto; padding: 30px 20px; display: flex; flex-direction: column; align-items: center; gap: 15px;">
+            <div style="display: flex; gap: 15px;">
+                <a href="https://github.com/Siddhesh-K7" target="_blank" rel="noopener noreferrer" style="color: var(--muted); font-size: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/siddhesh-k-75b87933b" target="_blank" rel="noopener noreferrer" style="color: var(--muted); font-size: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fab fa-linkedin"></i></a>
+                <a href="https://leetcode.com/u/aZbuzQuYMr/" target="_blank" rel="noopener noreferrer" style="color: var(--muted); font-size: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fa-solid fa-code"></i></a>
+                <a href="mailto:siddheshkrishnavel@gmail.com" style="color: var(--muted); font-size: 1.2rem; transition: color 0.2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="color: var(--muted); font-size: 0.9rem; text-align: center;">
+                Designed & Built with Precision by <strong>Siddhesh K</strong> © 2026. Hosted on GitHub Pages.
+            </p>
+        </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- =========================
          Certificate Preview Modal
     ========================== -->
-    <div id="cert-modal" class="cert-modal">
+    <div id="cert-modal" class="cert-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-backdrop"></div>
         <div class="modal-content glass-card">
             <div class="modal-header">
                 <h3 id="modal-title">Certificate Title</h3>
-                <button id="modal-close" class="modal-close-btn">
+                <button id="modal-close" class="modal-close-btn" aria-label="Close certificate preview">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
             <div class="modal-body">
                 <div id="modal-loader" class="modal-loader">
                     <div class="spinner"></div>
-                    <p>Loading certificate viewer...</p>
+                    <p>Loading document viewer...</p>
                 </div>
-                <!-- Embed or Object will go here -->
                 <div id="viewer-container" class="viewer-container"></div>
             </div>
             <div class="modal-footer">
                 <span id="modal-issuer" class="modal-issuer">Issuer</span>
+                <a id="modal-download" href="#" target="_blank" class="btn btn-secondary" style="padding: 6px 14px; font-size: 0.85rem;" download>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Full File
+                </a>
             </div>
         </div>
     </div>
 
-    <!-- JS -->
-
+    <!-- JS Scripts -->
     <script src="certificates-data.js"></script>
     <script src="script.js"></script>
-
 </body>
 </html>
