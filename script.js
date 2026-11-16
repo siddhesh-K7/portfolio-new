@@ -1,46 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================================
-    // 1. Theme Switcher (Dark / Light Theme Persistence)
+    // 1. Theme Switcher (OLED Dark / Clean Light Mode)
     // ========================================================
     const themeToggleBtn = document.getElementById('theme-toggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const savedTheme = localStorage.getItem('siddhesh_portfolio_theme');
 
-    // Initial theme initialization
     if (savedTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
         if (themeToggleBtn) {
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            themeToggleBtn.setAttribute('title', 'Switch to dark theme');
+            themeToggleBtn.setAttribute('title', 'Switch to Dark Mode');
         }
     } else {
         document.documentElement.removeAttribute('data-theme');
         if (themeToggleBtn) {
             themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            themeToggleBtn.setAttribute('title', 'Switch to light theme');
+            themeToggleBtn.setAttribute('title', 'Switch to Light Mode');
         }
     }
 
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            if (isLight) {
                 document.documentElement.removeAttribute('data-theme');
                 localStorage.setItem('siddhesh_portfolio_theme', 'dark');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-                themeToggleBtn.setAttribute('title', 'Switch to light theme');
+                themeToggleBtn.setAttribute('title', 'Switch to Light Mode');
             } else {
                 document.documentElement.setAttribute('data-theme', 'light');
                 localStorage.setItem('siddhesh_portfolio_theme', 'light');
                 themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-                themeToggleBtn.setAttribute('title', 'Switch to dark theme');
+                themeToggleBtn.setAttribute('title', 'Switch to Dark Mode');
             }
         });
     }
 
     // ========================================================
-    // 2. Responsive Mobile Navigation Toggle
+    // 2. Mobile Drawer Navigation
     // ========================================================
     const mobileToggle = document.getElementById('mobile-toggle');
     const navLinksList = document.getElementById('nav-links');
@@ -52,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileToggle.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
         });
 
-        // Close mobile drawer when clicking any link
         navLinksList.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinksList.classList.contains('active')) {
@@ -64,13 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 3. Navbar Scroll & Dynamic Back-to-Top
+    // 3. Navbar Scroll & Back-to-Top Button
     // ========================================================
     const navbar = document.querySelector('.navbar');
     const backToTopBtn = document.getElementById('back-to-top');
 
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 40) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -113,33 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================================
-    // 5. Scroll Reveal IntersectionObserver
+    // 5. Scroll Reveal Intersection Observer
     // ========================================================
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.12
+        threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                revealObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    const fadeElements = document.querySelectorAll('.fade-in, .glass-card, .timeline-item, .skill-category, .section-header');
-    fadeElements.forEach(el => {
+    document.querySelectorAll('.fade-in, .glass-card, .timeline-item, .skill-category, .section-header').forEach(el => {
         if (!el.classList.contains('fade-in')) {
             el.classList.add('fade-in');
         }
-        observer.observe(el);
+        revealObserver.observe(el);
     });
 
     // ========================================================
-    // 6. Active Section Navbar Spy
+    // 6. Active Navbar Section Highlight
     // ========================================================
     const sections = document.querySelectorAll('section');
     const navAnchors = document.querySelectorAll('.nav-links a');
@@ -147,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 180;
+            const sectionTop = section.offsetTop - 160;
             if (window.scrollY >= sectionTop) {
                 current = section.getAttribute('id');
             }
@@ -162,15 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================================
-    // 7. Interactive Typing Effect (Professional Titles)
+    // 7. Interactive Professional Typing Animation
     // ========================================================
     const typingElement = document.querySelector('.hero-content .title');
     if (typingElement) {
         const titles = [
-            'Building Intelligent Solutions Through Code.',
-            'AI Engineer & Full-Stack Developer.',
-            'Deep Learning & LLM Agent Architect.',
-            'High-Performance Backend & Database Engineer.'
+            'Building Practical Products with AI & Clean Architecture.',
+            'Python Developer & Machine Learning Practitioner.',
+            'Deep Learning (1D-CNN) & Computer Vision Pipelines.',
+            'Full-Stack REST APIs & Relational Database Design.'
         ];
 
         let titleIdx = 0;
@@ -199,14 +195,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            setTimeout(typeHeroTitle, isDeleting ? 30 : 60);
+            setTimeout(typeHeroTitle, isDeleting ? 30 : 55);
         }
 
         typeHeroTitle();
     }
 
     // ========================================================
-    // 8. 3D Card Hover & Tilt Effects
+    // 8. Card Glow Hover Effect
     // ========================================================
     function applyCardTiltEffects() {
         const interactiveCards = document.querySelectorAll('.glass-card');
@@ -219,8 +215,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.style.background = `
                     radial-gradient(
                         circle at ${x}px ${y}px,
-                        rgba(0, 229, 255, 0.12),
-                        rgba(255, 255, 255, 0.03)
+                        var(--accent-glow),
+                        var(--bg-surface) 70%
                     )
                 `;
             });
@@ -253,13 +249,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             card.style.opacity = '1';
                             card.style.transform = 'translateY(0)';
-                        }, 50);
+                        }, 40);
                     } else {
                         card.style.opacity = '0';
-                        card.style.transform = 'translateY(15px)';
+                        card.style.transform = 'translateY(12px)';
                         setTimeout(() => {
                             card.style.display = 'none';
-                        }, 300);
+                        }, 250);
                     }
                 });
             });
@@ -267,124 +263,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 10. Real GitHub Repositories & Stats Integration
+    // 10. Curated Highlighted Open-Source Codebases
+    // (Excludes raw/temporary scrapers like 'qwertyuio' or 'siddhesh-K7')
     // ========================================================
     const githubReposGrid = document.getElementById('github-repos-grid');
-    const ghReposCount = document.getElementById('gh-repos-count');
 
-    // Language color mapping
-    const langColors = {
-        'Python': '#3572A5',
-        'TypeScript': '#3178c6',
-        'JavaScript': '#f1e05a',
-        'C#': '#178600',
-        'HTML': '#e34c26',
-        'CSS': '#563d7c',
-        'Java': '#b07219'
-    };
-
-    async function loadGitHubActivity() {
-        try {
-            // Fetch live public repositories of Siddhesh-K7
-            const response = await fetch('https://api.github.com/users/siddhesh-K7/repos?sort=updated&per_page=6');
-            if (!response.ok) throw new Error('GitHub API rate limit or network issue');
-
-            const repos = await response.json();
-            if (ghReposCount && repos.length > 0) {
-                ghReposCount.textContent = `${repos.length}+`;
-            }
-
-            if (githubReposGrid && Array.isArray(repos) && repos.length > 0) {
-                githubReposGrid.innerHTML = '';
-
-                repos.slice(0, 6).forEach(repo => {
-                    const repoCard = document.createElement('div');
-                    repoCard.className = 'glass-card github-repo-card fade-in visible';
-
-                    const lang = repo.language || 'Code';
-                    const color = langColors[lang] || '#00e5ff';
-                    const desc = repo.description || 'Public open-source repository showcasing engineering design and clean implementation.';
-
-                    repoCard.innerHTML = `
-                        <div>
-                            <div class="github-repo-header">
-                                <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="github-repo-title">
-                                    <i class="fa-regular fa-bookmark highlight"></i> ${repo.name}
-                                </a>
-                                <span style="font-size: 0.75rem; border: 1px solid var(--border); border-radius: 12px; padding: 2px 8px; color: var(--muted);">
-                                    ${repo.visibility || 'public'}
-                                </span>
-                            </div>
-                            <p class="github-repo-desc">${desc}</p>
-                        </div>
-                        <div class="github-repo-meta">
-                            <span><span class="lang-indicator" style="background: ${color};"></span>${lang}</span>
-                            <span><i class="fa-regular fa-star"></i> ${repo.stargazers_count}</span>
-                            <span><i class="fa-solid fa-code-fork"></i> ${repo.forks_count}</span>
-                        </div>
-                    `;
-
-                    githubReposGrid.appendChild(repoCard);
-                });
-
-                applyCardTiltEffects();
-            }
-        } catch (err) {
-            console.warn('Using curated GitHub repository data (fallback):', err);
-            // Graceful fallback to avoid empty state
-            if (githubReposGrid) {
-                githubReposGrid.innerHTML = `
-                    <div class="glass-card github-repo-card">
-                        <div>
-                            <div class="github-repo-header">
-                                <a href="https://github.com/siddhesh-K7/devpost-hackathon" target="_blank" class="github-repo-title">
-                                    <i class="fa-regular fa-bookmark highlight"></i> devpost-hackathon
-                                </a>
-                            </div>
-                            <p class="github-repo-desc">PayPilot AI: Autonomous Commerce, Multi-Agent Engine & PayPal Payment Orchestration with Google Gemini.</p>
-                        </div>
-                        <div class="github-repo-meta">
-                            <span><span class="lang-indicator" style="background: #3178c6;"></span>TypeScript / Python</span>
-                            <span><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> Production Ready</span>
-                        </div>
-                    </div>
-                    <div class="glass-card github-repo-card">
-                        <div>
-                            <div class="github-repo-header">
-                                <a href="https://github.com/siddhesh-K7/agrisense" target="_blank" class="github-repo-title">
-                                    <i class="fa-regular fa-bookmark highlight"></i> agrisense
-                                </a>
-                            </div>
-                            <p class="github-repo-desc">AgriSense: Explainable & Risk-Aware Framework for Agricultural Price (LSTM) and Demand (XGBoost) Forecasting.</p>
-                        </div>
-                        <div class="github-repo-meta">
-                            <span><span class="lang-indicator" style="background: #f1e05a;"></span>JavaScript / Python</span>
-                            <span><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> XAI Verified</span>
-                        </div>
-                    </div>
-                    <div class="glass-card github-repo-card">
-                        <div>
-                            <div class="github-repo-header">
-                                <a href="https://github.com/siddhesh-K7/WarehouseX-Order-Management-Performance-Optimization-System" target="_blank" class="github-repo-title">
-                                    <i class="fa-regular fa-bookmark highlight"></i> WarehouseX-Order-Management
-                                </a>
-                            </div>
-                            <p class="github-repo-desc">High-throughput ASP.NET Core Web API with LINQ query tuning, index optimization, and async non-tracking pipelines.</p>
-                        </div>
-                        <div class="github-repo-meta">
-                            <span><span class="lang-indicator" style="background: #178600;"></span>C# / .NET 8</span>
-                            <span><i class="fa-solid fa-circle-check" style="color: #10b981;"></i> 50% Faster</span>
-                        </div>
-                    </div>
-                `;
-                applyCardTiltEffects();
-            }
+    const curatedCodebases = [
+        {
+            name: "sign-backend",
+            url: "https://github.com/siddhesh-K7/sign-backend",
+            description: "Deep Learning 1D-CNN hand gesture recognition pipeline with OpenCV real-time video stream classification.",
+            language: "Python",
+            langColor: "#3572A5",
+            badge: "Deep Learning"
+        },
+        {
+            name: "devpost-hackathon",
+            url: "https://github.com/siddhesh-K7/devpost-hackathon",
+            description: "PayPilot AI: Autonomous Commerce & Multi-Agent Engine powered by Google Gemini and PayPal API v2 integration.",
+            language: "TypeScript",
+            langColor: "#3178c6",
+            badge: "AI Hackathon"
+        },
+        {
+            name: "agrisense",
+            url: "https://github.com/siddhesh-K7/agrisense",
+            description: "Explainable & Risk-Aware Agricultural Price (LSTM) and Demand (XGBoost) Forecasting platform with SHAP attributions.",
+            language: "Python",
+            langColor: "#3572A5",
+            badge: "Explainable AI"
+        },
+        {
+            name: "real-world-OpenEnv-AI-agent",
+            url: "https://github.com/siddhesh-K7/real-world-OpenEnv-environment-that-an-AI-agent",
+            description: "Customer Support OpenEnv benchmark environment for evaluating autonomous triage agents using formal FSM state spaces.",
+            language: "Python",
+            langColor: "#3572A5",
+            badge: "AI Agents"
+        },
+        {
+            name: "WarehouseX-Optimization",
+            url: "https://github.com/siddhesh-K7/WarehouseX-Order-Management-Performance-Optimization-System",
+            description: "High-throughput ASP.NET Core Web API with LINQ query tuning, index optimization, and async non-tracking pipelines.",
+            language: "C#",
+            langColor: "#178600",
+            badge: "Performance"
+        },
+        {
+            name: "SafeVault-User-Management",
+            url: "https://github.com/siddhesh-K7/SafeVault-Secure-User-Management-System",
+            description: "Enterprise user management & authentication engine with cryptographic token verification and RBAC security bounds.",
+            language: "Python",
+            langColor: "#3572A5",
+            badge: "Security"
         }
+    ];
+
+    if (githubReposGrid) {
+        githubReposGrid.innerHTML = '';
+        curatedCodebases.forEach(repo => {
+            const card = document.createElement('div');
+            card.className = 'glass-card github-repo-card fade-in visible';
+
+            card.innerHTML = `
+                <div>
+                    <div class="github-repo-header">
+                        <a href="${repo.url}" target="_blank" rel="noopener noreferrer" class="github-repo-title">
+                            <i class="fa-regular fa-bookmark" style="color: var(--accent-primary);"></i> ${repo.name}
+                        </a>
+                        <span style="font-size: 0.72rem; border: 1px solid var(--border-subtle); border-radius: var(--radius-full); padding: 2px 8px; color: var(--accent-primary); background: var(--accent-glow);">
+                            ${repo.badge}
+                        </span>
+                    </div>
+                    <p class="github-repo-desc">${repo.description}</p>
+                </div>
+                <div class="github-repo-meta">
+                    <span><span class="lang-indicator" style="background: ${repo.langColor};"></span>${repo.language}</span>
+                    <span><i class="fa-solid fa-code-branch"></i> Open Source</span>
+                    <span><a href="${repo.url}" target="_blank" style="color: var(--accent-primary); text-decoration: none;"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></span>
+                </div>
+            `;
+            githubReposGrid.appendChild(card);
+        });
+        applyCardTiltEffects();
     }
-    loadGitHubActivity();
 
     // ========================================================
-    // 11. Certifications Gallery & Dynamic Modal
+    // 11. Certifications Search & Modal Viewer
     // ========================================================
     const certsGrid = document.getElementById('certs-grid');
     const searchInput = document.getElementById('cert-search');
@@ -445,27 +410,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             card.innerHTML = `
-                <div class="cert-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-                    <i class="${iconClass} cert-icon" style="font-size: 1.8rem; color: var(--accent);"></i>
-                    <span class="cert-badge" style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.25); color: var(--accent); padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">
-                        ${cert.issuer}
-                    </span>
-                </div>
-                <div class="cert-card-body" style="flex: 1;">
-                    <h3 style="font-size: 1.15rem; margin-bottom: 12px; color: var(--text);">${cert.title}</h3>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        ${(cert.skills || []).map(s => `<span style="font-size: 0.75rem; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 6px; color: var(--muted);">${s}</span>`).join('')}
+                <div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                        <i class="${iconClass}" style="font-size: 1.6rem; color: var(--accent-primary);"></i>
+                        <span style="background: var(--accent-glow); border: 1px solid rgba(0, 229, 255, 0.25); color: var(--accent-primary); padding: 3px 10px; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 600;">
+                            ${cert.issuer}
+                        </span>
+                    </div>
+                    <h3 style="font-size: 1.12rem; margin-bottom: 12px; font-weight: 600; color: var(--text-primary);">${cert.title}</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;">
+                        ${(cert.skills || []).map(s => `<span style="font-size: 0.74rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); padding: 2px 8px; border-radius: 4px; color: var(--text-secondary);">${s}</span>`).join('')}
                     </div>
                 </div>
-                <div style="margin-top: 18px; border-top: 1px solid var(--border); padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-size: 0.8rem; color: var(--accent); font-weight: 500;">
+                <div style="border-top: 1px solid var(--border-subtle); padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.8rem; color: var(--accent-primary); font-weight: 500;">
                         <i class="fa-regular fa-eye"></i> View Certificate
                     </span>
-                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.8rem; color: var(--muted);"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.78rem; color: var(--text-muted);"></i>
                 </div>
             `;
 
-            card.style.cursor = 'pointer';
             card.addEventListener('click', () => {
                 openModal(cert.filePath, cert.title, cert.issuer);
             });
@@ -523,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
         setTimeout(() => {
             viewerContainer.innerHTML = '';
-        }, 300);
+        }, 250);
     }
 
     if (filterPills.length > 0) {
@@ -568,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCertificates();
 
     // ========================================================
-    // 12. Contact Form Validation & Formspree / Mailto Fallback
+    // 12. Contact Form with Input Validation
     // ========================================================
     const contactForm = document.getElementById('contact-form');
     const formAlert = document.getElementById('form-alert');
@@ -586,7 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if (!name || !email || !subject || !message) {
-                showFormAlert('Please fill in all required fields.', 'error');
+                showFormAlert('Please complete all required fields.', 'error');
                 return;
             }
 
@@ -595,7 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate sending & open verified mailto client
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Preparing Email...';
 
@@ -603,11 +566,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mailtoUrl = `mailto:siddheshkrishnavel@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Hi Siddhesh,\n\nMy name is ${name} (${email}).\n\n${message}`)}`;
                 window.location.href = mailtoUrl;
 
-                showFormAlert('Opening your default mail client with your message drafted. Thank you!', 'success');
+                showFormAlert('Drafting email in your default mail application. Thank you!', 'success');
                 contactForm.reset();
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<span>Send Message</span> <i class="fa-solid fa-arrow-right"></i>';
-            }, 600);
+            }, 500);
         });
     }
 
@@ -619,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             formAlert.style.display = 'none';
-        }, 7000);
+        }, 6000);
     }
 
 });
