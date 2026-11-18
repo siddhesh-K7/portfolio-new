@@ -68,6 +68,31 @@
 
 <body>
 
+    <!-- Glitch / Statement Screen Preloader (Inspired by reference) -->
+    <div id="glitch-loader" class="glitch-loader" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Loading portfolio experience">
+        <div class="glitch-loader__veil"></div>
+        <div class="glitch-loader__count" aria-hidden="true">
+            <span id="loader-percent">00</span>
+        </div>
+        <div class="glitch-loader__center">
+            <p class="glitch-loader__statement" id="loader-statement" aria-hidden="true">
+                <span class="glitch-loader__word">BUILDING</span>
+                <span class="glitch-loader__word glitch-loader__word--cyan">PRACTICAL</span>
+                <span class="glitch-loader__word">SOLUTIONS</span>
+                <span class="glitch-loader__word">THROUGH</span>
+                <span class="glitch-loader__word glitch-loader__word--cyan">CODE</span>
+            </p>
+            <p class="glitch-loader__frag glitch-loader__frag--0" aria-hidden="true">BUILDING PRACTICAL SOLUTIONS THROUGH CODE</p>
+            <p class="glitch-loader__frag glitch-loader__frag--1" aria-hidden="true">BUILDING PRACTICAL SOLUTIONS THROUGH CODE</p>
+            <p class="glitch-loader__frag glitch-loader__frag--2" aria-hidden="true">BUILDING PRACTICAL SOLUTIONS THROUGH CODE</p>
+            <p class="glitch-loader__frag glitch-loader__frag--3" aria-hidden="true">BUILDING PRACTICAL SOLUTIONS THROUGH CODE</p>
+            <p class="glitch-loader__frag glitch-loader__frag--4" aria-hidden="true">BUILDING PRACTICAL SOLUTIONS THROUGH CODE</p>
+        </div>
+    </div>
+
+    <!-- WebGL Particle Starfield Canvas -->
+    <canvas id="bg-starfield" class="bg-starfield-canvas"></canvas>
+
     <!-- Subtle Technical Grid Overlay -->
     <div class="grid-bg-overlay"></div>
 
@@ -1034,6 +1059,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="three.min.js"></script>
     <script src="certificates-data.js"></script>
     <script src="script.js"></script>
 </body>

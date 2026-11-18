@@ -1290,3 +1290,257 @@ main {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ========================================================
+   Interactive WebGL Canvas & Particle Background
+======================================================== */
+.bg-starfield-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+    transition: opacity 0.5s ease;
+}
+
+[data-theme="light"] .bg-starfield-canvas {
+    opacity: 0.35;
+}
+
+/* ========================================================
+   Interactive Click Ripple Effect (.pf-ripple)
+======================================================== */
+.pf-ripple {
+    pointer-events: none;
+    border: 1.5px solid rgba(56, 189, 248, 0.7);
+    border-radius: 9999px;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    animation: 0.85s cubic-bezier(0.2, 0.7, 0.3, 1) forwards pf-ripple;
+    position: fixed;
+    z-index: 9999;
+}
+
+@keyframes pf-ripple {
+    0% {
+        opacity: 1;
+        transform: scale(0.3);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(14);
+    }
+}
+
+/* ========================================================
+   Glitch Statement Preloader (Inspired by reference)
+======================================================== */
+.glitch-loader {
+    z-index: 10000;
+    pointer-events: auto;
+    color: #f1f5f9;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: var(--font-sans);
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: #080a0f;
+    transition: opacity 0.4s ease;
+}
+
+.glitch-loader__veil {
+    background: #080a0f;
+    position: absolute;
+    inset: 0;
+}
+
+.glitch-loader__count {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 800;
+    line-height: 1;
+    position: absolute;
+    top: clamp(1.2rem, 3vw, 2.5rem);
+    left: clamp(1.2rem, 3vw, 2.5rem);
+    color: rgba(255, 255, 255, 0.15);
+    letter-spacing: -0.05em;
+}
+
+.glitch-loader__center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 0 1.5rem;
+}
+
+.glitch-loader__center > p {
+    grid-area: 1 / 1;
+}
+
+.glitch-loader__statement,
+.glitch-loader__frag {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    max-width: 58rem;
+    font-size: clamp(1.2rem, 3.2vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.glitch-loader__statement {
+    transition: filter 0.2s linear;
+}
+
+.glitch-loader__word {
+    margin: 0 0.2em;
+    display: inline-block;
+    color: #e2e8f0;
+}
+
+.glitch-loader__word--cyan {
+    color: var(--accent-primary);
+    text-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+    font-weight: 800;
+}
+
+.glitch-loader__frag {
+    opacity: 0;
+    color: #e2e8f0;
+}
+
+.glitch-loader__frag--0 { clip-path: inset(0 0 80%); }
+.glitch-loader__frag--1 { clip-path: inset(20% 0 60%); }
+.glitch-loader__frag--2 { clip-path: inset(40% 0 40%); }
+.glitch-loader__frag--3 { clip-path: inset(60% 0 20%); }
+.glitch-loader__frag--4 { clip-path: inset(80% 0 0); }
+
+.glitch-loader.is-revealing {
+    pointer-events: none;
+}
+
+.glitch-loader.is-revealing .glitch-loader__statement {
+    animation: 0.12s steps(2, end) forwards loader-hide;
+}
+
+.glitch-loader.is-revealing .glitch-loader__frag {
+    animation: 0.65s cubic-bezier(0.6, 0, 0.4, 1) forwards loader-frag;
+}
+
+.glitch-loader.is-revealing .glitch-loader__frag--1 {
+    --dx: -1;
+    animation-delay: 35ms;
+}
+
+.glitch-loader.is-revealing .glitch-loader__frag--3 {
+    --dx: -1;
+    animation-delay: 75ms;
+}
+
+.glitch-loader.is-revealing .glitch-loader__frag--2 {
+    animation-delay: 20ms;
+}
+
+.glitch-loader.is-revealing .glitch-loader__count {
+    animation: 0.25s steps(3, end) forwards loader-hide;
+}
+
+.glitch-loader.is-revealing .glitch-loader__veil {
+    animation: 0.75s ease-in forwards loader-veil;
+}
+
+@keyframes loader-hide {
+    to { opacity: 0; }
+}
+
+@keyframes loader-frag {
+    0% {
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+    30% {
+        opacity: 1;
+        transform: translate(calc(var(--dx, 1) * 22px));
+        text-shadow: 3px 0 var(--accent-primary), -3px 0 rgba(239, 68, 68, 0.8);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--dx, 1) * 110px));
+        filter: blur(8px);
+    }
+}
+
+@keyframes loader-veil {
+    0% {
+        opacity: 1;
+        clip-path: none;
+    }
+    20% {
+        opacity: 0.95;
+        clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%, 0 36%, 100% 36%, 100% 100%, 0 100%);
+    }
+    40% {
+        opacity: 0.8;
+        transform: translate(-10px);
+    }
+    60% {
+        opacity: 0.5;
+        clip-path: none;
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        transform: none;
+    }
+    100% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+        -webkit-backdrop-filter: blur(0px);
+    }
+}
+
+/* ========================================================
+   Glassmorphism 2.0 & Dynamic Hover Lighting
+======================================================== */
+.glass-card {
+    position: relative;
+    transition: transform 0.22s cubic-bezier(0.2, 0, 0, 1), 
+                box-shadow 0.22s cubic-bezier(0.2, 0, 0, 1), 
+                border-color 0.2s ease;
+    will-change: transform;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6), 
+                0 0 20px -4px rgba(56, 189, 248, 0.15) !important;
+}
+
+[data-theme="light"] .glass-card:hover {
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08), 
+                0 0 20px -4px rgba(2, 132, 199, 0.12) !important;
+}
+
+/* Magnetic subtle hover on buttons & social icons */
+.btn, .social-icon, .filter-pill, .project-filter-btn {
+    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.4, 1), 
+                background-color 0.18s ease, 
+                border-color 0.18s ease, 
+                box-shadow 0.18s ease;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.06);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -4px rgba(56, 189, 248, 0.35);
+}
+

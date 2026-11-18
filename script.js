@@ -1,6 +1,289 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ========================================================
+    // 0. Glitch / Statement Screen Preloader (Inspired by reference)
+    // ========================================================
+    const loader = document.getElementById('glitch-loader');
+    const loaderPercent = document.getElementById('loader-percent');
+    const loaderStatement = document.getElementById('loader-statement');
+
+    if (loader) {
+        document.body.style.overflow = 'hidden';
+        let progress = 0;
+        const startTime = performance.now();
+        const duration = 1200; // 1.2s smooth reveal
+
+        const updateLoader = (now) => {
+            const elapsed = now - startTime;
+            const target = Math.min(100, Math.floor((elapsed / duration) * 100));
+            progress += Math.ceil((target - progress) * 0.2);
+
+            if (loaderPercent) {
+                loaderPercent.textContent = progress < 10 ? `0${progress}` : `${progress}`;
+            }
+
+            if (loaderStatement) {
+                const blurAmount = (1 - progress / 100) * 8;
+                loaderStatement.style.filter = `blur(${blurAmount}px)`;
+            }
+
+            if (progress < 100) {
+                requestAnimationFrame(updateLoader);
+            } else {
+                loader.classList.add('is-revealing');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 800);
+            }
+        };
+
+        requestAnimationFrame(updateLoader);
+    }
+
+    // ========================================================
+    // 0.1 Interactive WebGL Particle Starfield (Three.js GPU Engine)
+    // ========================================================
+    const canvas = document.getElementById('bg-starfield');
+    let triggerStarfieldPulse = null;
+
+    if (canvas && typeof THREE !== 'undefined') {
+        try {
+            const renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                alpha: true,
+                antialias: false,
+                powerPreference: 'high-performance'
+            });
+
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 200);
+            camera.position.set(0, 0, 6);
+
+            const isMobile = window.innerWidth < 768;
+            const particleCount = isMobile ? 1000 : 2200;
+
+            const positions = new Float32Array(particleCount * 3);
+            const aSize = new Float32Array(particleCount);
+            const aSeed = new Float32Array(particleCount);
+
+            for (let i = 0; i < particleCount; i++) {
+                const radius = Math.pow(Math.random(), 0.7) * 26;
+                const angle = Math.random() * Math.PI * 2;
+                positions[i * 3] = Math.cos(angle) * radius * 1.4 + (Math.random() - 0.5) * 4;
+                positions[i * 3 + 1] = Math.sin(angle) * radius * 0.9 + (Math.random() - 0.5) * 4;
+                positions[i * 3 + 2] = -Math.random() * 70;
+
+                aSize[i] = Math.random() < 0.08 ? (6 + Math.random() * 8) : (1.2 + Math.random() * 2.8);
+                aSeed[i] = Math.random();
+            }
+
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            geometry.setAttribute('aSize', new THREE.BufferAttribute(aSize, 1));
+            geometry.setAttribute('aSeed', new THREE.BufferAttribute(aSeed, 1));
+
+            // Custom GLSL Vertex & Fragment Shaders
+            const vertexShader = `
+                attribute float aSize;
+                attribute float aSeed;
+                uniform float uTime;
+                uniform float uTravel;
+                uniform float uDepth;
+                uniform vec2 uMouse;
+                uniform float uSpeed;
+                uniform float uPixelRatio;
+                uniform float uClock;
+                uniform float uAspect;
+                uniform vec3 uClick[4];
+                varying float vAlpha;
+                varying float vSeed;
+                varying float vSize;
+
+                void main() {
+                    vec3 p = position;
+                    // Organic ambient drift
+                    p.x += sin(uTime * (0.12 + aSeed * 0.2) + aSeed * 31.0) * (0.4 + aSeed * 0.6);
+                    p.y += cos(uTime * (0.10 + aSeed * 0.18) + aSeed * 17.0) * (0.4 + aSeed * 0.6);
+
+                    // Forward warp travel
+                    float z = p.z + uTravel + uTime * 0.35;
+                    z = mod(z + uDepth, uDepth + 6.0) - uDepth;
+                    p.z = z;
+
+                    // Mouse parallax displacement
+                    float near = clamp((z + uDepth) / (uDepth + 6.0), 0.0, 1.0);
+                    p.xy += uMouse * near * near * 1.8;
+
+                    vec4 mv = modelViewMatrix * vec4(p, 1.0);
+
+                    // Click shockwave ripple repulsion
+                    vec4 clip0 = projectionMatrix * mv;
+                    vec2 ndc = clip0.xy / clip0.w;
+                    for (int i = 0; i < 4; i++) {
+                        float age = uClock - uClick[i].z;
+                        if (age > 0.0 && age < 3.5) {
+                            vec2 d = ndc - uClick[i].xy;
+                            d.x *= uAspect;
+                            float dist = length(d);
+                            float reach = 0.18 + age * 0.55;
+                            float fall = exp(-dist * dist / (reach * reach * 0.35));
+                            float env = age * exp(-age * 2.2) * 6.0;
+                            vec2 dir = dist > 0.0001 ? d / dist : vec2(0.0, 1.0);
+                            dir.x /= uAspect;
+                            mv.xy += dir * fall * env * 0.25 * -mv.z;
+                        }
+                    }
+
+                    gl_Position = projectionMatrix * mv;
+                    float pulse = 0.75 + 0.25 * sin(uTime * (0.8 + aSeed) + aSeed * 50.0);
+                    gl_PointSize = aSize * uPixelRatio * (1.0 + uSpeed * 0.5) * (60.0 / -mv.z) * (0.8 + near * near * 1.8);
+
+                    float fadeFar = smoothstep(-uDepth, -uDepth + 14.0, z);
+                    float fadeNear = 1.0 - smoothstep(2.0, 5.5, z);
+                    vAlpha = fadeFar * fadeNear * pulse * (0.35 + aSeed * 0.65) * (0.55 + near * 0.75);
+                    vSeed = aSeed;
+                    vSize = aSize;
+                }
+            `;
+
+            const fragmentShader = `
+                varying float vAlpha;
+                varying float vSeed;
+                varying float vSize;
+
+                void main() {
+                    vec2 c = gl_PointCoord - 0.5;
+                    float d = length(c);
+                    float core = exp(-d * d * 60.0);
+                    float halo = exp(-d * d * 7.0) * (0.35 + vSize * 0.04);
+                    float a = (core + halo) * vAlpha;
+                    if (a < 0.003) discard;
+                    
+                    // Cyan-blue celestial stars matching portfolio accent
+                    vec3 col = mix(vec3(0.08, 0.45, 0.85), vec3(0.22, 0.74, 0.97), core * (0.4 + vSeed * 0.6));
+                    gl_FragColor = vec4(col * a, a);
+                }
+            `;
+
+            const shaderMaterial = new THREE.ShaderMaterial({
+                vertexShader: vertexShader,
+                fragmentShader: fragmentShader,
+                transparent: true,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending,
+                uniforms: {
+                    uTime: { value: 0 },
+                    uTravel: { value: 0 },
+                    uDepth: { value: 70 },
+                    uMouse: { value: new THREE.Vector2(0, 0) },
+                    uSpeed: { value: 0 },
+                    uPixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
+                    uClock: { value: 0 },
+                    uAspect: { value: window.innerWidth / window.innerHeight },
+                    uClick: { value: [0, 1, 2, 3].map(() => new THREE.Vector3(0, 0, -99)) }
+                }
+            });
+
+            const points = new THREE.Points(geometry, shaderMaterial);
+            points.frustumCulled = false;
+            scene.add(points);
+
+            const handleResize = () => {
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+                renderer.setSize(w, h, false);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                shaderMaterial.uniforms.uAspect.value = w / h;
+            };
+            window.addEventListener('resize', handleResize);
+
+            const mouse = { x: 0, y: 0 };
+            window.addEventListener('pointermove', (e) => {
+                mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
+            }, { passive: true });
+
+            let clickIndex = 0;
+            triggerStarfieldPulse = (clientX, clientY) => {
+                const nx = (clientX / window.innerWidth) * 2 - 1;
+                const ny = -((clientY / window.innerHeight) * 2 - 1);
+                shaderMaterial.uniforms.uClick.value[clickIndex++ % 4].set(
+                    nx,
+                    ny,
+                    (performance.now() - animStart) / 1000
+                );
+            };
+
+            let smoothTravel = 0;
+            let targetTravel = 0;
+            let prevScrollY = window.scrollY;
+            let currentSpeed = 0;
+            const animStart = performance.now();
+            let lastTime = animStart;
+
+            const renderLoop = (now) => {
+                requestAnimationFrame(renderLoop);
+                const dt = Math.min((now - lastTime) / 1000, 0.05);
+                lastTime = now;
+
+                const curY = window.scrollY;
+                const deltaScroll = curY - prevScrollY;
+                prevScrollY = curY;
+                targetTravel += deltaScroll * 0.02;
+
+                const prevTravel = smoothTravel;
+                smoothTravel += (targetTravel - smoothTravel) * (1 - Math.exp(-6 * dt));
+
+                const instSpeed = Math.min(Math.abs(smoothTravel - prevTravel) / Math.max(dt, 0.001) / 25, 1);
+                currentSpeed += (instSpeed - currentSpeed) * (1 - Math.exp(-8 * dt));
+
+                const u = shaderMaterial.uniforms;
+                u.uTime.value = (now - animStart) / 1000;
+                u.uTravel.value = smoothTravel;
+                u.uSpeed.value = currentSpeed;
+                u.uClock.value = (now - animStart) / 1000;
+                u.uMouse.value.x += (mouse.x - u.uMouse.value.x) * (1 - Math.exp(-3 * dt));
+                u.uMouse.value.y += (mouse.y - u.uMouse.value.y) * (1 - Math.exp(-3 * dt));
+
+                renderer.render(scene, camera);
+            };
+
+            requestAnimationFrame(renderLoop);
+        } catch (err) {
+            console.warn('WebGL Starfield initialization skipped:', err);
+        }
+    }
+
+    // ========================================================
+    // 0.2 Global Click Ripple Effect (.pf-ripple)
+    // ========================================================
+    window.addEventListener('pointerdown', (e) => {
+        const target = e.target;
+        if (target && target.closest('input, textarea, select')) return;
+
+        // Trigger WebGL shockwave if starfield is active
+        if (triggerStarfieldPulse) {
+            triggerStarfieldPulse(e.clientX, e.clientY);
+        }
+
+        // Create DOM ripple element
+        const ripple = document.createElement('span');
+        ripple.className = 'pf-ripple';
+        ripple.style.left = `${e.clientX}px`;
+        ripple.style.top = `${e.clientY}px`;
+        document.body.appendChild(ripple);
+
+        ripple.addEventListener('animationend', () => {
+            ripple.remove();
+        }, { once: true });
+    }, { passive: true });
+
+    // ========================================================
     // 1. Theme Switcher (OLED Dark / Clean Light Mode)
     // ========================================================
     const themeToggleBtn = document.getElementById('theme-toggle');
