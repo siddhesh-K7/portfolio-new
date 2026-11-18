@@ -240,6 +240,27 @@ main {
     color: var(--text-primary);
 }
 
+.nav-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: var(--radius-sm);
+    background: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    color: var(--accent-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.84rem !important;
+    transition: all var(--transition-fast);
+}
+
+.nav-resume-btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-base) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+}
+
 .theme-toggle-btn {
     width: 36px;
     height: 36px;

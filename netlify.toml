@@ -20,3 +20,5 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Content-Disposition = "inline"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
