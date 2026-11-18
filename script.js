@@ -284,6 +284,106 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     // ========================================================
+    // 0.3 Hero Visual: Interactive 3D Wireframe Polyhedron (WebGL)
+    // ========================================================
+    const hero3dCanvas = document.getElementById('hero-3d-canvas');
+    if (hero3dCanvas && typeof THREE !== 'undefined') {
+        try {
+            const hRenderer = new THREE.WebGLRenderer({
+                canvas: hero3dCanvas,
+                alpha: true,
+                antialias: true
+            });
+            hRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            const wrapper = hero3dCanvas.parentElement;
+            const w = wrapper ? wrapper.clientWidth : 330;
+            const h = wrapper ? wrapper.clientHeight : 330;
+            hRenderer.setSize(w, h);
+
+            const hScene = new THREE.Scene();
+            const hCamera = new THREE.PerspectiveCamera(50, w / h, 0.1, 100);
+            hCamera.position.z = 4.8;
+
+            // Concentric 3D Wireframe Rings and Icosahedron
+            const icoGeo = new THREE.IcosahedronGeometry(1.65, 1);
+            const icoMat = new THREE.MeshBasicMaterial({
+                color: 0x38bdf8,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.38
+            });
+            const icoMesh = new THREE.Mesh(icoGeo, icoMat);
+            hScene.add(icoMesh);
+
+            const torusGeo = new THREE.TorusGeometry(1.85, 0.015, 8, 48);
+            const torusMat = new THREE.MeshBasicMaterial({
+                color: 0x0ea5e9,
+                wireframe: true,
+                transparent: true,
+                opacity: 0.3
+            });
+            const torusMesh = new THREE.Mesh(torusGeo, torusMat);
+            torusMesh.rotation.x = Math.PI / 3;
+            hScene.add(torusMesh);
+
+            // Orbiting node points
+            const nodeCount = 18;
+            const nodeGeo = new THREE.BufferGeometry();
+            const nodePos = new Float32Array(nodeCount * 3);
+            for (let i = 0; i < nodeCount; i++) {
+                const phi = Math.acos(-1 + (2 * i) / nodeCount);
+                const theta = Math.sqrt(nodeCount * Math.PI) * phi;
+                nodePos[i * 3] = 1.65 * Math.cos(theta) * Math.sin(phi);
+                nodePos[i * 3 + 1] = 1.65 * Math.sin(theta) * Math.sin(phi);
+                nodePos[i * 3 + 2] = 1.65 * Math.cos(phi);
+            }
+            nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
+            const nodeMat = new THREE.PointsMaterial({
+                color: 0x7dd3fc,
+                size: 5,
+                transparent: true,
+                opacity: 0.8
+            });
+            const nodePoints = new THREE.Points(nodeGeo, nodeMat);
+            icoMesh.add(nodePoints);
+
+            let heroMouseX = 0;
+            let heroMouseY = 0;
+            window.addEventListener('pointermove', (e) => {
+                const rect = hero3dCanvas.getBoundingClientRect();
+                const cx = rect.left + rect.width / 2;
+                const cy = rect.top + rect.height / 2;
+                heroMouseX = (e.clientX - cx) * 0.003;
+                heroMouseY = (e.clientY - cy) * 0.003;
+            }, { passive: true });
+
+            const animateHero3D = () => {
+                requestAnimationFrame(animateHero3D);
+                icoMesh.rotation.y += 0.004;
+                icoMesh.rotation.x += 0.002;
+                torusMesh.rotation.z += 0.006;
+
+                // Subtle smooth mouse tilting
+                icoMesh.rotation.x += (heroMouseY - icoMesh.rotation.x * 0.1) * 0.05;
+                icoMesh.rotation.y += (heroMouseX - icoMesh.rotation.y * 0.1) * 0.05;
+
+                hRenderer.render(hScene, hCamera);
+            };
+            animateHero3D();
+
+            window.addEventListener('resize', () => {
+                const nw = wrapper ? wrapper.clientWidth : 330;
+                const nh = wrapper ? wrapper.clientHeight : 330;
+                hRenderer.setSize(nw, nh);
+                hCamera.aspect = nw / nh;
+                hCamera.updateProjectionMatrix();
+            });
+        } catch (e) {
+            console.warn('Hero 3D Canvas initialization skipped:', e);
+        }
+    }
+
+    // ========================================================
     // 1. Theme Switcher (OLED Dark / Clean Light Mode)
     // ========================================================
     const themeToggleBtn = document.getElementById('theme-toggle');
@@ -485,26 +585,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================================
-    // 8. Card Glow Hover Effect
+    // 8. Interactive 3D Card Tilt & Spotlight Effect (Perspective Hover)
     // ========================================================
     function applyCardTiltEffects() {
         const interactiveCards = document.querySelectorAll('.glass-card');
         interactiveCards.forEach(card => {
+            // Remove previous listeners if any
+            card.style.transformStyle = 'preserve-3d';
+
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
                 const y = e.clientY - rect.top;
 
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                // Subtle 3D tilt calculation (-7deg to +7deg max)
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+
                 card.style.background = `
                     radial-gradient(
-                        circle at ${x}px ${y}px,
-                        var(--accent-glow),
-                        var(--bg-surface) 70%
+                        400px circle at ${x}px ${y}px,
+                        rgba(56, 189, 248, 0.12),
+                        var(--bg-surface) 75%
                     )
                 `;
             });
 
             card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
                 card.style.background = '';
             });
         });

@@ -469,21 +469,49 @@ main {
     filter: invert(0.2);
 }
 
-/* Avatar Visual */
+/* Avatar Visual & 3D Interactive Hologram Canvas */
 .hero-visual {
     flex: 0.85;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.hero-3d-wrapper {
+    position: relative;
+    width: 330px;
+    height: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-3d-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .avatar-container {
-    width: 270px;
-    height: 270px;
+    width: 250px;
+    height: 250px;
     border-radius: var(--radius-lg);
     padding: 6px;
     background: var(--bg-surface);
     border: 1px solid var(--border-medium);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+}
+
+.avatar-container:hover {
+    transform: scale(1.03);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px rgba(56, 189, 248, 0.25);
 }
 
 .avatar-img {
