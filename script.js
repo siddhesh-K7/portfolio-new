@@ -708,9 +708,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             name: "SafeVault-User-Management",
             url: "https://github.com/siddhesh-K7/SafeVault-Secure-User-Management-System",
-            description: "Enterprise user management & authentication engine with cryptographic token verification and RBAC security bounds.",
-            language: "Python",
-            langColor: "#3572A5",
+            description: "Enterprise user management & authentication engine with BCrypt password hashing, JWT Bearer tokens, and RBAC.",
+            language: "C#",
+            langColor: "#178600",
             badge: "Security"
         }
     ];
